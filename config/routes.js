@@ -46,6 +46,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /user/add': 'UserController.addUser',
-  'POST /save-user': 'UserController.saveUser'
+  '/login': 'AuthController.loginPage',
+  '/do-login': 'AuthController.doLogin',
+  '/users': 'UserController.userPage'
+
 };

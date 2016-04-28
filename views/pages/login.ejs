@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My Wall | Login</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <!--External CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!--External CSS End-->
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/AdminLTE.min.css">
+  <link rel="stylesheet" href="/styles/_all-skins.min.css">
+  <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/minimal/_all.css">
+  <link rel="stylesheet" href="/styles/minimal/aero.css">
+  <link rel="stylesheet" href="/styles/minimal/blue.css">
+  <link rel="stylesheet" href="/styles/minimal/green.css">
+  <link rel="stylesheet" href="/styles/minimal/grey.css">
+  <link rel="stylesheet" href="/styles/minimal/minimal.css">
+  <link rel="stylesheet" href="/styles/minimal/orange.css">
+  <link rel="stylesheet" href="/styles/minimal/pink.css">
+  <link rel="stylesheet" href="/styles/minimal/purple.css">
+  <link rel="stylesheet" href="/styles/minimal/red.css">
+  <link rel="stylesheet" href="/styles/minimal/yellow.css">
+  <!--STYLES END-->
+
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>Admin</b>LTE</a>
+  </div><!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+    <form action="/do-login" method="post">
+      <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email" name="email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div><!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div><!-- /.col -->
+      </div>
+    </form>
+
+    <!--<div class="social-auth-links text-center">-->
+    <!--<p>- OR -</p>-->
+    <!--<a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using-->
+    <!--Facebook</a>-->
+    <!--<a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using-->
+    <!--Google+</a>-->
+    <!--</div>-->
+    <!-- /.social-auth-links -->
+
+    <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a>
+
+  </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->
+
+<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+<!--SCRIPTS-->
+<script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/dependencies/jQuery-2.1.4.min.js"></script>
+<script src="/js/dependencies/angular.min.js"></script>
+<script src="/js/dependencies/bootstrap.min.js"></script>
+<script src="/js/angular-route.min.js"></script>
+<script src="/js/app.min.js"></script>
+<script src="/js/icheck.min.js"></script>
+<script src="/js/ngApp.js"></script>
+<!--SCRIPTS END-->
+<script>
+  $(document).ready(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
+</html>

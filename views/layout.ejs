@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +17,17 @@
   <link rel="stylesheet" href="/styles/AdminLTE.min.css">
   <link rel="stylesheet" href="/styles/_all-skins.min.css">
   <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/minimal/_all.css">
+  <link rel="stylesheet" href="/styles/minimal/aero.css">
+  <link rel="stylesheet" href="/styles/minimal/blue.css">
+  <link rel="stylesheet" href="/styles/minimal/green.css">
+  <link rel="stylesheet" href="/styles/minimal/grey.css">
+  <link rel="stylesheet" href="/styles/minimal/minimal.css">
+  <link rel="stylesheet" href="/styles/minimal/orange.css">
+  <link rel="stylesheet" href="/styles/minimal/pink.css">
+  <link rel="stylesheet" href="/styles/minimal/purple.css">
+  <link rel="stylesheet" href="/styles/minimal/red.css">
+  <link rel="stylesheet" href="/styles/minimal/yellow.css">
   <!--STYLES END-->
 
 </head>
@@ -30,11 +41,25 @@
   </div>
 </div>
 
+<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
 <!--SCRIPTS-->
 <script src="/js/dependencies/sails.io.js"></script>
 <script src="/js/dependencies/jQuery-2.1.4.min.js"></script>
+<script src="/js/dependencies/angular.min.js"></script>
 <script src="/js/dependencies/bootstrap.min.js"></script>
+<script src="/js/angular-route.min.js"></script>
 <script src="/js/app.min.js"></script>
+<script src="/js/icheck.min.js"></script>
+<script src="/js/ngApp.js"></script>
 <!--SCRIPTS END-->
+<script>
+  //  io.socket.on('user', function gotHelloMessage (data) {
+  //    console.log('User alert!', data);
+  //  });
+  //
+  //  io.socket.get('/user', function gotResponse(body, response) {
+  //    console.log('Current users: ', body);
+  //  });
+</script>
 </body>
 </html>
