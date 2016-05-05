@@ -114,6 +114,7 @@ app.controller('UserController', ['$scope', '$timeout', 'data', 'UserFactory',
         console.log($scope.newUser);
         UserFactory.saveUser($scope.newUser).success(function (response) {
           console.log(response);
+          $scope.newUser = {};
         }).error(function (message, code, data) {
           alert(message);
         });
