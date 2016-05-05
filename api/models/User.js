@@ -5,6 +5,8 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+var bcrypt = require('bcrypt');
+
 module.exports = {
 
   attributes: {
@@ -25,6 +27,14 @@ module.exports = {
     online: {
       type: 'boolean'
     }
+  },
+
+  beforeCreate: function (values, cb) {
+    // hash password
+    bcrypt.hash(values.password, 10, function (err, hash) {
+      values.password = hash;
+      cb();
+    });
   }
 };
 
