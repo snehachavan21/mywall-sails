@@ -50,8 +50,8 @@ app.factory('ProjectFactory', ['$rootScope', '$http',
     return projectFact;
   }]);
 
-app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory',
-  function ($scope, data, ProjectFactory) {
+app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory', '$location',
+  function ($scope, data, ProjectFactory, $location) {
     /**
      * Getting the list of projects through resolve.
      */
@@ -67,10 +67,10 @@ app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory',
 
     angular.extend($scope, {
       saveProject: function () {
-        console.log($scope.newProject);
         ProjectFactory.saveProject($scope.newProject).success(function (response) {
           console.log('saved project', response);
           $scope.newProject = {};
+          $location.path('/');
         }).error(function (message, code, data) {
           alert(message);
         });

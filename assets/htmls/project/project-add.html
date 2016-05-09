@@ -6,7 +6,6 @@
       </div>
 
       <div class="box-body">
-        <pre>{{newProject}}</pre>
         <form name="newProjectForm" ng-submit="saveProject()">
           <input type='hidden' name='_csrf' value='<%= _csrf %>' ng-model="newProject._csrf">
 
