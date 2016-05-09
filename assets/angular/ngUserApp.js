@@ -1,5 +1,3 @@
-var app = angular.module('app', ['ngRoute']);
-
 /*Code taken from https://gist.github.com/angelix/11355094*/
 app.factory('csrfReqInterceptor', function ($q, $injector) {
   var _csrfToken = false;

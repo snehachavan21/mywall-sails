@@ -36,6 +36,9 @@ module.exports.policies = {
     dashBoard: ['authenticated'],
     userPage: ['authenticated']
   },
+  ProjectController: {
+    '*': ['authenticated']
+  },
   'rest/RestUserController': {
     '*': ['authenticated']
   }

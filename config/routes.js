@@ -48,6 +48,7 @@ module.exports.routes = {
   '/logout': 'AuthController.logout',
   '/do-login': 'AuthController.doLogin',
   '/users': 'UserController.userPage',
+  '/projects': 'ProjectController.getProjectPage',
 
   /***************************************************************************
    *                                                                          *
