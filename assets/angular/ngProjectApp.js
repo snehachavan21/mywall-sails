@@ -1,10 +1,10 @@
 app.config(['$routeProvider', '$locationProvider',
-  function ($routeProvider, $locationProvider) {
+  function($routeProvider, $locationProvider) {
     $routeProvider.when('/project', {
       templateUrl: 'htmls/project/project-list.html',
       controller: 'ProjectController',
       resolve: {
-        data: function (ProjectFactory) {
+        data: function(ProjectFactory) {
           return {
             projectList: ProjectFactory.getProjects()
           }
@@ -16,7 +16,7 @@ app.config(['$routeProvider', '$locationProvider',
       templateUrl: 'htmls/project/project-add.html',
       controller: 'ProjectController',
       resolve: {
-        data: function (ProjectFactory) {
+        data: function(ProjectFactory) {
           ProjectFactory.getProjects();
         }
       }
@@ -24,17 +24,19 @@ app.config(['$routeProvider', '$locationProvider',
 
     $routeProvider.otherwise('/project');
 
-  }]);
+  }
+]);
 
 app.factory('ProjectFactory', ['$rootScope', '$http',
-  function ($rootScope, $http) {
+  function($rootScope, $http) {
     var projectFact = {};
+    var projects = {};
 
-    projectFact.getProjects = function () {
+    projectFact.getProjects = function() {
       return $http.get('api/get-all-projects');
     };
 
-    projectFact.saveProject = function (projectObj) {
+    projectFact.saveProject = function(projectObj) {
       console.log('Inside fact');
       $http.defaults.headers.post['X-CSRF-Token'] = document.getElementsByName('_csrf')[0].value;
       return $http({
@@ -48,32 +50,44 @@ app.factory('ProjectFactory', ['$rootScope', '$http',
     };
 
     return projectFact;
-  }]);
+  }
+]);
 
-app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory', '$location',
-  function ($scope, data, ProjectFactory, $location) {
+app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory', '$location', '$log',
+  function($scope, data, ProjectFactory, $location, $log) {
     /**
      * Getting the list of projects through resolve.
      */
     if (data && data.projectList != undefined) {
-      data.projectList.success(function (data) {
+      data.projectList.success(function(data) {
+        $log.debug('project list', data);
         $scope.projects = data;
       });
     }
 
-    angular.extend($scope, {
-      newProject: {}
+    io.socket.on('project-added', function gotHelloMessage(data) {
+      $scope.$broadcast('projectAdded', data);
+    });
+
+    $scope.$on('projectAdded', function(event, data) {
+      $scope.projects.push(data.project);
+      $scope.$apply(); /*Need to check why apply is required*/
     });
 
     angular.extend($scope, {
-      saveProject: function () {
-        ProjectFactory.saveProject($scope.newProject).success(function (response) {
-          console.log('saved project', response);
+      newProject: {},
+      projects: []
+    });
+
+    angular.extend($scope, {
+      saveProject: function() {
+        ProjectFactory.saveProject($scope.newProject).success(function(response) {
           $scope.newProject = {};
           $location.path('/');
-        }).error(function (message, code, data) {
+        }).error(function(message, code, data) {
           alert(message);
         });
       }
     });
-  }]);
+  }
+]);

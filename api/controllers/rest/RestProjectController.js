@@ -19,6 +19,9 @@ module.exports = {
       status: 1
     }).exec(function (err, project) {
       if (!err) {
+        sails.sockets.blast('project-added', {
+          project: project
+        });
         return res.json(200, project);
       } else {
         console.log(err);
