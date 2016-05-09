@@ -16,6 +16,7 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
+        <th>Status</th>
       </tr>
       </thead>
 
@@ -23,6 +24,8 @@
       <tr ng-repeat="user in users track by $index">
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
+        <td ng-if="user.online"><a href="javascript:void;" class="btn btn-success btn-xs">Online</a></td>
+        <td ng-if="!user.online"><a href="javascript:void;" class="btn btn-danger btn-xs">Offline</a></td>
       </tr>
       </tbody>
     </table>

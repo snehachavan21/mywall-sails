@@ -4,7 +4,7 @@ var passport = require('passport'),
 
 //helper functions
 function findById(id, fn) {
-  User.findOne(id).done(function(err, user) {
+  User.findOne(id).exec(function (err, user) {
     if (err) {
       return fn(null, null);
     } else {
@@ -14,17 +14,14 @@ function findById(id, fn) {
 }
 
 function findByUsername(u, fn) {
-  console.log('findByUsername');
   User.findOne({
     email: u
   }).exec(function(err, user) {
     // Error handling
     if (err) {
-      console.log('inside error');
       return fn(null, null);
       // The User was found successfully!
     } else {
-      console.log(user);
       return fn(null, user);
     }
   });
@@ -36,12 +33,12 @@ function findByUsername(u, fn) {
 // this will be as simple as storing the user ID when serializing, and finding
 // the user by ID when deserializing.
 passport.serializeUser(function(user, done) {
-  exec(null, user.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
   findById(id, function(err, user) {
-    exec(err, user);
+    done(err, user);
   });
 });
 

@@ -32,9 +32,7 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+  '/': 'UserController.dashBoard',
 
   /***************************************************************************
    *                                                                          *
@@ -47,6 +45,7 @@ module.exports.routes = {
    ***************************************************************************/
 
   '/login': 'AuthController.loginPage',
+  '/logout': 'AuthController.logout',
   '/do-login': 'AuthController.doLogin',
   '/users': 'UserController.userPage',
 

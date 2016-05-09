@@ -6,6 +6,9 @@
  */
 
 module.exports = {
+  dashBoard: function (req, res) {
+    return res.view('homepage');
+  },
   userPage: function (req, res) {
     return res.view('pages/user');
   }
