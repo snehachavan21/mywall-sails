@@ -41,6 +41,9 @@ module.exports.policies = {
   },
   'rest/RestUserController': {
     '*': ['authenticated']
+  },
+  'rest/RestProjectController': {
+    '*': ['authenticated']
   }
 
   /***************************************************************************

@@ -23,7 +23,8 @@ module.exports = {
       password: req.body.password,
       online: null,
     }).exec(function (err, user) {
-      return res.json(200, user);
+      if (!err)
+        return res.json(200, user);
     });
   }
 };
