@@ -50,6 +50,7 @@ module.exports.routes = {
   '/users': 'UserController.userPage',
   '/clients': 'ClientController.clientPage',
   '/projects': 'ProjectController.getProjectPage',
+  '/test': 'UserController.testPage',
 
   /***************************************************************************
    *                                                                          *
