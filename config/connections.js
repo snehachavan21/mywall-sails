@@ -54,6 +54,14 @@ module.exports.connections = {
     user: 'homestead',
     password: 'secret',
     database: 'sails-wall'
+  },
+
+  localServer: {
+    adapter: 'sails-mysql',
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'mywall'
   }
 
   /***************************************************************************
