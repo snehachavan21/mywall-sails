@@ -1,12 +1,12 @@
 app.config(['$routeProvider', '$locationProvider',
 
-  function ($routeProvider, $locationProvider) {
+  function($routeProvider, $locationProvider) {
 
     $routeProvider.when('/users', {
       templateUrl: 'htmls/user/user-list.html',
       controller: 'UserController',
       resolve: {
-        data: function (UserFactory) {
+        data: function(UserFactory) {
           return {
             userList: UserFactory.getUsers()
           }
@@ -18,7 +18,7 @@ app.config(['$routeProvider', '$locationProvider',
       templateUrl: 'htmls/user/user-add.html',
       controller: 'UserController',
       resolve: {
-        data: function (UserFactory) {
+        data: function(UserFactory) {
           UserFactory.getUsers();
         }
       }
@@ -26,19 +26,17 @@ app.config(['$routeProvider', '$locationProvider',
 
     $routeProvider.otherwise('/users');
 
-  }]);
+  }
+]);
 
-app.factory('UserFactory', ['$rootScope', '$http', function ($rootScope, $http) {
+app.factory('UserFactory', ['$rootScope', '$http', function($rootScope, $http) {
   var userFact = {};
 
-  userFact.getUsers = function () {
-    // return io.socket.get('/user', function gotResponse(body, response) {
-    //   return response.body;
-    // });
+  userFact.getUsers = function() {
     return $http.get('api/get-all-users');
   };
 
-  userFact.saveUser = function (userObj) {
+  userFact.saveUser = function(userObj) {
     $http.defaults.headers.post['X-CSRF-Token'] = document.getElementsByName('_csrf')[0].value;
     return $http({
       headers: {
@@ -54,30 +52,44 @@ app.factory('UserFactory', ['$rootScope', '$http', function ($rootScope, $http) 
 }]);
 
 app.controller('UserController', ['$scope', '$timeout', 'data', 'UserFactory',
-  function ($scope, $timeout, data, UserFactory) {
+  function($scope, $timeout, data, UserFactory) {
 
     /**
      * Getting the list of users through resolve.
      */
     if (data && data.userList != undefined) {
-      data.userList.success(function (data) {
+      data.userList.success(function(data) {
         $scope.users = data;
       });
     }
+
+    io.socket.on('user-updated', function gotHelloMessage(data) {
+      $scope.$broadcast('userUpdated', data);
+    });
+
+    $scope.$on('userUpdated', function(event, data) {
+      angular.forEach($scope.users, function(value, key) {
+        if (value.id == data.userId) {
+          $scope.users[key] = data.user;
+        }
+        $scope.$apply();
+      });
+    });
 
     angular.extend($scope, {
       newUser: {}
     });
 
     angular.extend($scope, {
-      saveUser: function (newUserForm) {
+      saveUser: function(newUserForm) {
         console.log($scope.newUser);
-        UserFactory.saveUser($scope.newUser).success(function (response) {
+        UserFactory.saveUser($scope.newUser).success(function(response) {
           console.log(response);
           $scope.newUser = {};
-        }).error(function (message, code, data) {
+        }).error(function(message, code, data) {
           alert(message);
         });
       }
     });
-  }]);
+  }
+]);

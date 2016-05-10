@@ -7,30 +7,34 @@
 var passport = require('passport');
 
 module.exports = {
-  loginPage: function (req, res) {
+  loginPage: function(req, res) {
     return res.view('pages/login', {
       layout: false
     });
   },
-  logout: function (req, res) {
+  logout: function(req, res) {
     User.update({
       id: req.user.id
     }, {
       online: null
     }).exec(function afterwards(err, updated) {
+      sails.sockets.blast('user-updated', {
+        user: updated[0],
+        userId: updated[0].id
+      });
       req.logout();
       res.redirect('/login');
     });
   },
-  doLogin: function (req, res) {
-    passport.authenticate('local', function (err, user, info) {
+  doLogin: function(req, res) {
+    passport.authenticate('local', function(err, user, info) {
       if ((err) || (!user)) {
         return res.send({
           message: 'login failed'
         });
         res.send(err);
       } else {
-        req.logIn(user, function (err) {
+        req.logIn(user, function(err) {
           if (err) {
             console.log(err);
             res.send(err);
@@ -40,6 +44,10 @@ module.exports = {
             }, {
               online: 1
             }).exec(function afterwards(err, updated) {
+              sails.sockets.blast('user-updated', {
+                user: updated[0],
+                userId: updated[0].id
+              });
               return res.redirect('/');
             });
           }
