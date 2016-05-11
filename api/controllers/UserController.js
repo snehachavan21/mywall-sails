@@ -20,20 +20,16 @@ module.exports = {
     return res.view('pages/user');
   },
   testPage: function(req, res) {
+
     var mailOptions = {
       from: '"Amitav Roy" <amitav.roy@focalworks.in>',
       to: '"Amitav Roy" <amitav.roy@focalworks.in>',
       subject: 'Hi',
       html: 'This is a <strong>test</strong> mail'
     };
-    transporter.sendMail(mailOptions, function(err, info) {
-      if (err) {
-        console.log('err');
-        console.log(err);
-      } else {
-        console.log('Message sent to ' + info.response);
-      }
-    })
+
+    sesmail.sesmailSendMail(mailOptions);
+
     return res.json(200, ["asdads"]);
   }
 };
