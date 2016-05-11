@@ -20,10 +20,14 @@ module.exports = {
     var data_from_client = req.params.all();
     Client.create(data_from_client)
       .exec(function (err, client) {
-        sails.sockets.blast('client-created', {
-          client: client
-        });
-        return res.json(200, client);
+        if(!err) {
+          sails.sockets.blast('client-created', {
+            client: client
+          });
+          return res.json(200, client);
+        }else{
+          console.log(err);
+        }
       });
   }
 };

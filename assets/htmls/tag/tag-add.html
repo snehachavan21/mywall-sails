@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-5 col-sm-push-3">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Create new Tag</h3>
+            </div>
+
+            <div class="box-body">
+                <form name="newTagForm" ng-submit="saveTag()">
+                    <input type='hidden' name='_csrf' value='<%= _csrf %>' ng-model="newTag._csrf">
+
+                    <div class="form-group">
+                        <label for="tag_name">Tag name</label>
+                        <input type="text" name="tag_name"
+                               id="tag_name" placeholder="Enter tag name"
+                               class="form-control" ng-model="newTag.tag_name"/>
+                    </div>
+
+                    <button class="btn btn-success">
+                        <i class="fa fa-upload"></i> Create
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

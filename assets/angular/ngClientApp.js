@@ -29,24 +29,26 @@ app.config(['$routeProvider', '$locationProvider',
 
 
 app.controller('ClientController',['$log','$scope','$location','data', 'ClientFactory',function($log,$scope,$location,data,ClientFactory){
-  io.socket.get('/rest/RestClientController.saveNewClient');
   if (data && data.clientList != undefined) {
     data.clientList.success(function (data) {
       $scope.clients = data;
     });
   }
 
+  io.socket.on('client-created',function(obj){
+    if(obj){
+      $scope.$broadcast('clientCreated', obj);
+    }
+  });
+
+  $scope.$on('clientCreated',function(event,obj){
+    $scope.clients.push(obj.client);
+    $scope.$apply();
+  });
+
   angular.extend($scope, {
     newClient: {},
     clients:[]
-  });
-
-  io.socket.on('client-created',function(obj){
-    if(obj){
-      console.log(obj);
-      $scope.clients.push(obj.client);
-      $scope.$apply();
-    }
   });
 
   angular.extend($scope, {

@@ -50,6 +50,8 @@ module.exports.routes = {
   '/users': 'UserController.userPage',
   '/clients': 'ClientController.clientPage',
   '/projects': 'ProjectController.getProjectPage',
+  '/tags': 'TagController.tagPage',
+  '/time-entries': 'TimeEntriesController.timeEntriesPage',
   '/test': 'UserController.testPage',
 
   /***************************************************************************
@@ -66,6 +68,10 @@ module.exports.routes = {
   'get /api/get-all-clients': 'rest/RestClientController.getAllClients',
   'post /api/save-new-client': 'rest/RestClientController.saveNewClient',
   'get /api/get-all-projects': 'rest/RestProjectController.restGetProjects',
-  'post /api/save-new-project': 'rest/RestProjectController.saveProject'
+  'post /api/save-new-project': 'rest/RestProjectController.saveProject',
+  'get /api/get-all-tags': 'rest/RestTagController.getAllTags',
+  'post /api/save-new-tag': 'rest/RestTagController.saveNewTag',
+  'get /api/get-all-time-entries': 'rest/RestTimeEntriesController.getAllTimeEntries',
+  'post /api/save-new-time-entry': 'rest/RestTimeEntriesController.saveNewTimeEntry'
 
 };

@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-5 col-sm-push-3">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Create new TimeEntry</h3>
+            </div>
+
+            <div class="box-body">
+                <form name="newTimeEntryForm" ng-submit="saveTimeEntry()">
+                    <input type='hidden' name='_csrf' value='<%= _csrf %>' ng-model="newTimeEntry._csrf">
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" name="description"
+                               id="description" placeholder="Enter Description"
+                               class="form-control" ng-model="newTimeEntry.desc"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project">Project</label>
+                        <input type="text" name="project"
+                               id="project" placeholder="Enter Project"
+                               class="form-control" ng-model="newTimeEntry.project_name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tags</label>
+                        <oi-select
+                                oi-options="item.name for item in shopArr track by item.id"
+                                ng-model="newTimeEntry.tags"
+                                multiple
+                                placeholder="Select"
+                                ></oi-select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hours">Hours</label>
+                        <input type="text" name="hours"
+                               id="hours" placeholder="Enter Hours"
+                               class="form-control" ng-model="newTimeEntry.time"/>
+                    </div>
+
+                    <button class="btn btn-success">
+                        <i class="fa fa-upload"></i> Create
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

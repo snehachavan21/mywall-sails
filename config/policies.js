@@ -38,7 +38,16 @@ module.exports.policies = {
   ClientController: {
     clientPage: ['authenticated']
   },
+  ClientController: {
+    '*': ['authenticated']
+  },
   ProjectController: {
+    '*': ['authenticated']
+  },
+  TagController: {
+    '*': ['authenticated']
+  },
+  TimeEntriesController: {
     '*': ['authenticated']
   },
   'rest/RestUserController': {
@@ -48,6 +57,12 @@ module.exports.policies = {
     '*': ['authenticated']
   },
   'rest/RestProjectController': {
+    '*': ['authenticated']
+  },
+  'rest/RestTagController': {
+    '*': ['authenticated']
+  },
+  'rest/RestTimeEntriesController': {
     '*': ['authenticated']
   }
 
