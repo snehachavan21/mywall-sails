@@ -6,7 +6,7 @@
       </div>
 
       <div class="box-body">
-        <p>{{clients}} asdsad</p>
+        <p>{{clients}}</p>
         <form name="newProjectForm" ng-submit="saveProject()">
           <input type='hidden' name='_csrf' value='<%= _csrf %>' ng-model="newProject._csrf">
 
@@ -18,18 +18,28 @@
           </div>
 
           <div class="form-group">
-            <label for="project_client">Client</label>
-            <input type="text" name="client_id"
-            id="project_client" placeholder="Select client"
-            class="form-control" ng-model="newProject.client_id" required/>
-          </div>
+            <label for="client">Client</label>
+            <oi-select
+            oi-options="item.client_name for item in clients track by item.id"
+            ng-model="bundle"
+            multiple
+            placeholder="Select">
+          </oi-select>
+        </div>
 
-          <button class="btn btn-success">
-            <i class="fa fa-upload"></i> Save
-          </button>
+        <div class="form-group">
+          <label for="project_client">Client</label>
+          <input type="text" name="client_id"
+          id="project_client" placeholder="Select client"
+          class="form-control" ng-model="newProject.client_id" required/>
+        </div>
 
-        </form>
-      </div>
+        <button class="btn btn-success">
+          <i class="fa fa-upload"></i> Save
+        </button>
+
+      </form>
     </div>
   </div>
+</div>
 </div>
