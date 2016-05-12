@@ -12,18 +12,18 @@
 
     <table class="table table-striped table-bordered table-responsive">
       <thead>
-      <tr>
-        <th>Name</th>
-        <th>Status</th>
-      </tr>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+        </tr>
       </thead>
 
       <tbody>
-      <tr ng-repeat="project in projects track by $index">
-        <td>{{project.name}}</td>
-        <td ng-if="project.status == 1"><a href="javascript:void(0)" class="btn btn-success btn-xs">Active</a></td>
-        <td ng-if="project.status != 1"><a href="javascript:void(0)" class="btn btn-warning btn-xs">Deactive</a></td>
-      </tr>
+        <tr ng-repeat="project in projects track by $index">
+          <td><a href="#/project/{{project.id}}/estimate">{{project.name}}</a></td>
+          <td ng-if="project.status == 1"><a href="javascript:void(0)" class="btn btn-success btn-xs">Active</a></td>
+          <td ng-if="project.status != 1"><a href="javascript:void(0)" class="btn btn-warning btn-xs">Deactive</a></td>
+        </tr>
       </tbody>
     </table>
   </div>

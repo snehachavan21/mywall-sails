@@ -27,5 +27,15 @@ module.exports = {
         console.log(err);
       }
     })
+  },
+  resetGetProjectById: function(req, res) {
+    const pId = req.body.id;
+    Project.find({
+      id: pId
+    }).populate('estimates').exec(function(err, project) {
+      if (!err) {
+        return res.json(200, project);
+      }
+    });
   }
 };

@@ -11,10 +11,15 @@ app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory', '$locat
     }
 
     if (data && data.clientList != undefined) {
-      console.log('clientList');
       data.clientList.success(function(data) {
         $log.debug('client list', data);
         $scope.clients = data;
+      });
+    }
+
+    if (data && data.project != undefined) {
+      data.project.success(function(data) {
+        $scope.singleProject = data[0];
       });
     }
 
@@ -29,6 +34,7 @@ app.controller('ProjectController', ['$scope', 'data', 'ProjectFactory', '$locat
 
     angular.extend($scope, {
       newProject: {},
+      singleProject: {},
       projects: [],
       clients: []
     });

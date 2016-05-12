@@ -69,6 +69,7 @@ module.exports.routes = {
   'post /api/save-new-client': 'rest/RestClientController.saveNewClient',
   'get /api/get-all-projects': 'rest/RestProjectController.restGetProjects',
   'post /api/save-new-project': 'rest/RestProjectController.saveProject',
+  'post /api/project-by-id': 'rest/RestProjectController.resetGetProjectById',
   'get /api/get-all-tags': 'rest/RestTagController.getAllTags',
   'post /api/save-new-tag': 'rest/RestTagController.saveNewTag',
   'get /api/get-all-time-entries': 'rest/RestTimeEntriesController.getAllTimeEntries',
