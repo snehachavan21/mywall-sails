@@ -22,57 +22,62 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-   *                                                                          *
-   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-   * etc. depending on your default view engine) your home page.              *
-   *                                                                          *
-   * (Alternatively, remove this and add an `index.html` file in your         *
-   * `assets` directory)                                                      *
-   *                                                                          *
-   ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+     * etc. depending on your default view engine) your home page.              *
+     *                                                                          *
+     * (Alternatively, remove this and add an `index.html` file in your         *
+     * `assets` directory)                                                      *
+     *                                                                          *
+     ***************************************************************************/
 
-  '/': 'UserController.dashBoard',
+    '/': 'UserController.dashBoard',
 
-  /***************************************************************************
-   *                                                                          *
-   * Custom routes here...                                                    *
-   *                                                                          *
-   * If a request to a URL doesn't match any of the custom routes above, it   *
-   * is matched against Sails route blueprints. See `config/blueprints.js`    *
-   * for configuration options and examples.                                  *
-   *                                                                          *
-   ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Custom routes here...                                                    *
+     *                                                                          *
+     * If a request to a URL doesn't match any of the custom routes above, it   *
+     * is matched against Sails route blueprints. See `config/blueprints.js`    *
+     * for configuration options and examples.                                  *
+     *                                                                          *
+     ***************************************************************************/
 
-  '/login': 'AuthController.loginPage',
-  '/logout': 'AuthController.logout',
-  '/do-login': 'AuthController.doLogin',
-  '/users': 'UserController.userPage',
-  '/clients': 'ClientController.clientPage',
-  '/projects': 'ProjectController.getProjectPage',
-  '/tags': 'TagController.tagPage',
-  '/time-entries': 'TimeEntriesController.timeEntriesPage',
-  '/test': 'UserController.testPage',
+    '/login': 'AuthController.loginPage',
+    '/logout': 'AuthController.logout',
+    '/do-login': 'AuthController.doLogin',
+    '/users': 'UserController.userPage',
+    '/clients': 'ClientController.clientPage',
+    '/projects': 'ProjectController.getProjectPage',
+    '/tags': 'TagController.tagPage',
+    '/time-entries': 'TimeEntriesController.timeEntriesPage',
+    '/test': 'UserController.testPage',
+    '/change-password': 'UserController.changePassword',
+    '/forgot-password': 'AuthController.forgotPassword',
+    '/send-password': 'AuthController.sendPassword',
 
-  /***************************************************************************
-   *                                                                          *
-   * REST API Call routes are here...                                         *
-   *                                                                          *
-   * All rest api calls routes are added below this block of code             *
-   *                                                                          *
-   ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * REST API Call routes are here...                                         *
+     *                                                                          *
+     * All rest api calls routes are added below this block of code             *
+     *                                                                          *
+     ***************************************************************************/
 
-  'get /api/get-csrf-token': 'rest/RestUserController.getCSRFToken',
-  'get /api/get-all-users': 'rest/RestUserController.restGetUsers',
-  'post /api/save-new-user': 'rest/RestUserController.saveNewUser',
-  'get /api/get-all-clients': 'rest/RestClientController.getAllClients',
-  'post /api/save-new-client': 'rest/RestClientController.saveNewClient',
-  'get /api/get-all-projects': 'rest/RestProjectController.restGetProjects',
-  'post /api/save-new-project': 'rest/RestProjectController.saveProject',
-  'post /api/project-by-id': 'rest/RestProjectController.resetGetProjectById',
-  'get /api/get-all-tags': 'rest/RestTagController.getAllTags',
-  'post /api/save-new-tag': 'rest/RestTagController.saveNewTag',
-  'get /api/get-all-time-entries': 'rest/RestTimeEntriesController.getAllTimeEntries',
-  'post /api/save-new-time-entry': 'rest/RestTimeEntriesController.saveNewTimeEntry'
+    'get /api/get-csrf-token': 'rest/RestUserController.getCSRFToken',
+    'get /api/get-all-users': 'rest/RestUserController.restGetUsers',
+    'post /api/save-new-user': 'rest/RestUserController.saveNewUser',
+    'get /api/get-all-clients': 'rest/RestClientController.getAllClients',
+    'post /api/save-new-client': 'rest/RestClientController.saveNewClient',
+    'get /api/get-all-projects': 'rest/RestProjectController.restGetProjects',
+    'post /api/save-new-project': 'rest/RestProjectController.saveProject',
+    'post /api/project-by-id': 'rest/RestProjectController.resetGetProjectById',
+    'get /api/get-all-tags': 'rest/RestTagController.getAllTags',
+    'post /api/save-new-tag': 'rest/RestTagController.saveNewTag',
+    'get /api/get-all-time-entries': 'rest/RestTimeEntriesController.getAllTimeEntries',
+    'post /api/save-new-time-entry': 'rest/RestTimeEntriesController.saveNewTimeEntry',
+
+    'post /api/save-change-password': 'rest/RestUserController.changePassword'
 
 };

@@ -8,28 +8,32 @@
 var nodemailer = require('nodemailer');
 var ses = require('nodemailer-ses-transport');
 var transporter = nodemailer.createTransport(ses({
-  accessKeyId: sails.config.accessKeyId,
-  secretAccessKey: sails.config.secretAccessKey
+    accessKeyId: sails.config.accessKeyId,
+    secretAccessKey: sails.config.secretAccessKey
 }));
 
 module.exports = {
-  dashBoard: function(req, res) {
-    return res.view('homepage');
-  },
-  userPage: function(req, res) {
-    return res.view('pages/user');
-  },
-  testPage: function(req, res) {
+    dashBoard: function (req, res) {
+        return res.view('homepage');
+    },
+    userPage: function (req, res) {
+        return res.view('pages/user');
+    },
+    testPage: function (req, res) {
 
-    var mailOptions = {
-      from: '"Amitav Roy" <amitav.roy@focalworks.in>',
-      to: '"Amitav Roy" <amitav.roy@focalworks.in>',
-      subject: 'Hi',
-      html: 'This is a <strong>test</strong> mail'
-    };
+        var mailOptions = {
+            from: '"Amitav Roy" <amitav.roy@focalworks.in>',
+            to: '"Amitav Roy" <amitav.roy@focalworks.in>',
+            subject: 'Hi',
+            html: 'This is a <strong>test</strong> mail'
+        };
 
-    sesmail.sesmailSendMail(mailOptions);
+        sesmail.sesmailSendMail(mailOptions);
 
-    return res.json(200, ["asdads"]);
-  }
+        return res.json(200, ["asdads"]);
+    },
+    changePassword: function (req, res) {
+        return res.view('pages/change_password');
+    }
+
 };
