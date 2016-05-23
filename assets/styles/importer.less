@@ -29,3 +29,50 @@
 //
 // etc.
 @import url("minimal/_all.css");
+
+.time-entries {
+  padding: 5px 0;
+  margin-bottom: 5px;
+
+  .time-entry {
+    .time-entry-wrapper {
+      padding: 0 10px;
+    }
+    border-bottom: 1px solid #f3f3f3;
+    padding: 15px 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:nth-child(even) {
+      background-color: #f7f7f7;
+    }
+
+    span {
+      float: left;
+    }
+
+    .desc, .time, .project-name {
+      font-weight: bold;
+    }
+
+    .meta {
+      padding-right: 20px;
+      span {
+        padding-right: 10px;
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      .desc {
+        padding-right: 50px;
+      }
+
+      .client-name {
+        font-style: italic;
+      }
+    }
+  }
+}

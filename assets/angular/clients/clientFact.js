@@ -8,6 +8,18 @@ app.factory('ClientFactory', ['$rootScope', '$http', function ($rootScope, $http
     return $http.get('api/get-all-clients');
   };
 
+  clientFact.getClient = function (clientId) {
+    $http.defaults.headers.post['X-CSRF-Token'] = document.getElementsByName('_csrf')[0].value;
+    return $http({
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      url: '/api/get-client',
+      method: "POST",
+      data:clientId
+    })
+  };
+
   clientFact.saveNewClient = function (clientObj) {
     $http.defaults.headers.post['X-CSRF-Token'] = document.getElementsByName('_csrf')[0].value;
     return $http({

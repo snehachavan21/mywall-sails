@@ -17,16 +17,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="project">Project</label>
-                        <input type="text" name="project"
-                               id="project" placeholder="Enter Project"
-                               class="form-control" ng-model="newTimeEntry.project_name"/>
+                        <label>Project</label>
+                        <oi-select
+                                oi-options="item as item.name for item in projects track by item.id"
+                                ng-model="newTimeEntry.project"
+                                placeholder="Select"
+                                ></oi-select>
                     </div>
 
                     <div class="form-group">
                         <label>Tags</label>
                         <oi-select
-                                oi-options="item.name for item in shopArr track by item.id"
+                                oi-options="item.id as item.tag_name for item in tags track by item.id"
                                 ng-model="newTimeEntry.tags"
                                 multiple
                                 placeholder="Select"
