@@ -13,13 +13,13 @@ var transporter = nodemailer.createTransport(ses({
 }));
 
 module.exports = {
-  dashBoard: function (req, res) {
+  dashBoard: function(req, res) {
     return res.view('homepage');
   },
-  userPage: function (req, res) {
+  userPage: function(req, res) {
     return res.view('pages/user');
   },
-  testPage: function (req, res) {
+  testPage: function(req, res) {
 
     var mailOptions = {
       from: '"Amitav Roy" <amitav.roy@focalworks.in>',
@@ -32,7 +32,7 @@ module.exports = {
 
     return res.json(200, ["asdads"]);
   },
-  changePassword: function (req, res) {
+  changePassword: function(req, res) {
     return res.view('pages/change_password');
   }
 

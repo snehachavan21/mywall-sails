@@ -6,8 +6,8 @@ var transporter = nodemailer.createTransport(ses({
 }));
 
 module.exports = {
-  sesmailSendMail: function (mailOptions) {
-    transporter.sendMail(mailOptions, function (err, info) {
+  sesmailSendMail: function(mailOptions) {
+    transporter.sendMail(mailOptions, function(err, info) {
       if (err) {
         console.log(err);
         return err;

@@ -6,28 +6,28 @@
  */
 
 module.exports = {
-  getCSRFToken: function (req, res) {
+  getCSRFToken: function(req, res) {
     return res.json(200, _csrf);
   },
-  restGetUsers: function (req, res) {
+  restGetUsers: function(req, res) {
     var users = User.find({
       limit: 20
-    }).exec(function (err, users) {
+    }).exec(function(err, users) {
       return res.json(200, users);
     });
   },
-  saveNewUser: function (req, res) {
+  saveNewUser: function(req, res) {
     User.create({
       name: req.body.display_name,
       email: req.body.email_address,
       password: req.body.password,
       online: null,
-    }).exec(function (err, user) {
+    }).exec(function(err, user) {
       if (!err)
         return res.json(200, user);
     });
   },
-  changePassword: function (req, res) {
+  changePassword: function(req, res) {
     if (User.verifyPassword(req.body.current_password, req.user)) {
       User.update({
         id: req.user.id

@@ -1,11 +1,11 @@
-app.factory('UserFactory', ['$rootScope', '$http', function ($rootScope, $http) {
+app.factory('UserFactory', ['$rootScope', '$http', function($rootScope, $http) {
   var userFact = {};
 
-  userFact.getUsers = function () {
+  userFact.getUsers = function() {
     return $http.get('api/get-all-users');
   };
 
-  userFact.saveUser = function (userObj) {
+  userFact.saveUser = function(userObj) {
     $http.defaults.headers.post['X-CSRF-Token'] = document.getElementsByName('_csrf')[0].value;
     return $http({
       headers: {
@@ -17,7 +17,7 @@ app.factory('UserFactory', ['$rootScope', '$http', function ($rootScope, $http) 
     });
   };
 
-  userFact.saveChangePassword = function (userObj) {
+  userFact.saveChangePassword = function(userObj) {
     $http.defaults.headers.post['X-CSRF-Token'] = document.getElementsByName('_csrf')[0].value;
     return $http({
       headers: {

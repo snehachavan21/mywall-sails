@@ -8,12 +8,12 @@
 var passport = require('passport');
 
 module.exports = {
-  loginPage: function (req, res) {
+  loginPage: function(req, res) {
     return res.view('pages/login', {
       layout: false
     });
   },
-  logout: function (req, res) {
+  logout: function(req, res) {
     User.update({
       id: req.user.id
     }, {
@@ -27,14 +27,14 @@ module.exports = {
       res.redirect('/login');
     });
   },
-  doLogin: function (req, res) {
-    passport.authenticate('local', function (err, user, info) {
+  doLogin: function(req, res) {
+    passport.authenticate('local', function(err, user, info) {
       if ((err) || (!user)) {
         req.flash('error', 'Login failed.');
         return res.redirect('/login');
         res.send(err);
       } else {
-        req.logIn(user, function (err) {
+        req.logIn(user, function(err) {
           if (err) {
             console.log(err);
             res.send(err);
@@ -55,15 +55,15 @@ module.exports = {
       }
     })(req, res);
   },
-  forgotPassword: function (req, res) {
+  forgotPassword: function(req, res) {
     return res.view('pages/forgot_password', {
       layout: false
     });
   },
-  sendPassword: function (req, res) {
+  sendPassword: function(req, res) {
     User.findOne({
       email: req.body.username
-    }).exec(function (err, user) {
+    }).exec(function(err, user) {
       if (err) {
         return res.send(err);
       }
@@ -86,7 +86,7 @@ module.exports = {
           user: user,
           newpassword: newpassword,
           layout: false
-        }, function (err, html) {
+        }, function(err, html) {
 
           var mailOptions = {
             from: '"Amitav Roy" <amitav.roy@focalworks.in>',

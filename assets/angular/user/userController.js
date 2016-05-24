@@ -1,11 +1,11 @@
 app.controller('UserController', ['$scope', '$timeout', 'data', 'UserFactory',
-  function ($scope, $timeout, data, UserFactory) {
+  function($scope, $timeout, data, UserFactory) {
 
     /**
      * Getting the list of users through resolve.
      */
     if (data && data.userList != undefined) {
-      data.userList.success(function (data) {
+      data.userList.success(function(data) {
         $scope.users = data;
       });
     }
@@ -14,8 +14,8 @@ app.controller('UserController', ['$scope', '$timeout', 'data', 'UserFactory',
       $scope.$broadcast('userUpdated', data);
     });
 
-    $scope.$on('userUpdated', function (event, data) {
-      angular.forEach($scope.users, function (value, key) {
+    $scope.$on('userUpdated', function(event, data) {
+      angular.forEach($scope.users, function(value, key) {
         if (value.id == data.userId) {
           $scope.users[key] = data.user;
         }
@@ -29,18 +29,18 @@ app.controller('UserController', ['$scope', '$timeout', 'data', 'UserFactory',
     });
 
     angular.extend($scope, {
-      saveUser: function (newUserForm) {
+      saveUser: function(newUserForm) {
         console.log($scope.newUser);
-        UserFactory.saveUser($scope.newUser).success(function (response) {
+        UserFactory.saveUser($scope.newUser).success(function(response) {
           console.log(response);
           $scope.newUser = {};
-        }).error(function (message, code, data) {
+        }).error(function(message, code, data) {
           alert(message);
         });
       },
-      saveChangePassword: function (changePasswordForm) {
+      saveChangePassword: function(changePasswordForm) {
         if (changePasswordForm) {
-          UserFactory.saveChangePassword($scope.currentUser).success(function (response) {
+          UserFactory.saveChangePassword($scope.currentUser).success(function(response) {
 
             if (response.hasOwnProperty('error')) {
               $scope.errors = response['error'];
@@ -56,7 +56,7 @@ app.controller('UserController', ['$scope', '$timeout', 'data', 'UserFactory',
               $scope.success = '';
               $scope.changePasswordForm.submitted = true;
             }
-          }).error(function (message, code, data) {
+          }).error(function(message, code, data) {
             alert(message);
           });
         } else {
