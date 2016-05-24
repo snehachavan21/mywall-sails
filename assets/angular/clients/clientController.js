@@ -27,7 +27,7 @@ app.controller('ClientController',['$log','$scope','$location','data', 'ClientFa
         $scope.newClient = {};
         $location.path("/clients");
       }).error(function (message, code, data) {
-        alert(message);
+          console.log(message);
       });
     }
   });

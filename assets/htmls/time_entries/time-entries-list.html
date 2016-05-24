@@ -11,8 +11,21 @@
             </a>
         </p>
 
-        <div ng-repeat="time_entry in timeEntries track by $index">
-            <td>{{time_entry.description}}</td>
+        <div class="time-entries">
+            <div ng-repeat="time_entry in timeEntries track by $index" class="time-entry">
+                <div class="clearfix time-entry-wrapper">
+                    <div class="col-sm-7">
+                        <span class="desc">{{time_entry.desc}}</span>
+                    </div>
+                    <div class="meta col-sm-2">
+                        <span class="project-name">{{time_entry.project_name}}</span>
+                        <span class="client-name">{{time_entry.client_name}}</span>
+                    </div>
+                    <div class="meta col-sm-2">
+                        <span class="time">{{time_entry.time}} hrs</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

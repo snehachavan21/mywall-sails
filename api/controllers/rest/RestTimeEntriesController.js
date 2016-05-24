@@ -17,9 +17,26 @@ module.exports = {
     });
   },
   saveNewTimeEntry:function(req,res){
-    var data_from_time_entries = req.params.all();
-    TimeEntries.create(data_from_time_entries).exec(function (err, time_entry) {
+    TimeEntries.create({
+        desc: req.body.desc,
+        user_id: req.user.id,
+        project_id: req.body.project.id,
+        project_name: req.body.project.name,
+        client_name: req.body.client_name,
+        time: req.body.time
+    }).exec(function (err, time_entry) {
       if(!err){
+        for(var i=0; i < req.body.tags.length; i++){
+          Taggable.create({
+            tag_id : req.body.tags[i],
+            taggable_id : time_entry.id,
+            taggable_type : 'time_entry'
+          }).exec(function(err,taggable){
+            if(err){
+              console.log(err);
+            }
+          });
+        }
         sails.sockets.blast('time-entry-created', {
           time_entry: time_entry
         });

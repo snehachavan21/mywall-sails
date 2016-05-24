@@ -16,6 +16,13 @@ module.exports = {
       return res.json(200, clients);
     });
   },
+  getClient: function (req, res) {
+    var clients = Client.find({
+      id:req.param('client_id')
+    }).exec(function (err, clients) {
+      return res.json(200, clients);
+    });
+  },
   saveNewClient:function(req,res){
     var data_from_client = req.params.all();
     Client.create(data_from_client)
