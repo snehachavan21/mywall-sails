@@ -37,9 +37,11 @@ module.exports = {
     doLogin: function (req, res) {
         passport.authenticate('local', function (err, user, info) {
             if ((err) || (!user)) {
-                return res.send({
-                    message: 'login failed'
-                });
+                req.flash('error', 'Login failed.');
+                return res.redirect('/login');
+                /* return res.send({
+                 message: 'login failed'
+                 });*/
                 res.send(err);
             } else {
                 req.logIn(user, function (err) {
