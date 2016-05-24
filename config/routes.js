@@ -44,19 +44,19 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-    '/login': 'AuthController.loginPage',
-    '/logout': 'AuthController.logout',
-    '/do-login': 'AuthController.doLogin',
-    '/users': 'UserController.userPage',
-    '/clients': 'ClientController.clientPage',
-    '/projects': 'ProjectController.getProjectPage',
-    '/tags': 'TagController.tagPage',
-    '/time-entries': 'TimeEntriesController.timeEntriesPage',
-    '/test': 'UserController.testPage',
-    '/change-password': 'UserController.changePassword',
-    '/forgot-password': 'AuthController.forgotPassword',
-    '/send-password': 'AuthController.sendPassword',
-    
+  '/login': 'AuthController.loginPage',
+  '/logout': 'AuthController.logout',
+  '/do-login': 'AuthController.doLogin',
+  '/users': 'UserController.userPage',
+  '/clients': 'ClientController.clientPage',
+  '/projects': 'ProjectController.getProjectPage',
+  '/tags': 'TagController.tagPage',
+  '/time-entries': 'TimeEntriesController.timeEntriesPage',
+  '/test': 'UserController.testPage',
+  '/change-password': 'UserController.changePassword',
+  '/forgot-password': 'AuthController.forgotPassword',
+  '/send-password': 'AuthController.sendPassword',
+
   /***************************************************************************
    *                                                                          *
    * REST API Call routes are here...                                         *
@@ -77,6 +77,6 @@ module.exports.routes = {
   'get /api/get-all-tags': 'rest/RestTagController.getAllTags',
   'post /api/save-new-tag': 'rest/RestTagController.saveNewTag',
   'get /api/get-all-time-entries': 'rest/RestTimeEntriesController.getAllTimeEntries',
-  'post /api/save-new-time-entry': 'rest/RestTimeEntriesController.saveNewTimeEntry'
-    'post /api/save-change-password': 'rest/RestUserController.changePassword'
+  'post /api/save-new-time-entry': 'rest/RestTimeEntriesController.saveNewTimeEntry',
+  'post /api/save-change-password': 'rest/RestUserController.changePassword'
 };
