@@ -78,5 +78,6 @@ module.exports.routes = {
   'post /api/save-new-tag': 'rest/RestTagController.saveNewTag',
   'get /api/get-all-time-entries': 'rest/RestTimeEntriesController.getAllTimeEntries',
   'post /api/save-new-time-entry': 'rest/RestTimeEntriesController.saveNewTimeEntry',
-  'post /api/save-change-password': 'rest/RestUserController.changePassword'
+  'post /api/save-change-password': 'rest/RestUserController.changePassword',
+  'post /api/delete-time-entry': 'rest/RestTimeEntriesController.deleteTimeEntry'
 };

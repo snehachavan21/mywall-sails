@@ -1,31 +1,46 @@
 <div class="box box-primary">
-    <!--<div class="box-header with-border">
-        <h3 class="box-title">Time Entries Listing</h3>
-    </div>-->
+  <div class="box-body">
 
-    <div class="box-body">
+    <p>
+      <a class="btn btn-success" href="#/time-entry-add">
+        <i class="fa fa-plus"></i> Add TimeEntry
+      </a>
+    </p>
 
-        <p>
-            <a class="btn btn-success" href="#/time-entry-add">
-                <i class="fa fa-plus"></i> Add TimeEntry
-            </a>
-        </p>
+    <div class="time-entry">
+      <ul class="timeline" ng-repeat="(date,time_entry_list) in timeEntries track by $index">
+        <li class="time-label">
+                  <span class="bg-blue">
+                    {{date | date:'EEE, dd MMM'}}
+                  </span>
+          <span class="pull-right bg-blue"><i class="fa fa-clock-o"></i>  {{time_entry_list.total}} hrs</span>
+        </li>
+        <li ng-repeat="time_entry in time_entry_list.data track by $index">
+          <i class="fa fa-hourglass-1 bg-yellow"></i>
 
-        <div class="time-entries">
-            <div ng-repeat="time_entry in timeEntries track by $index" class="time-entry">
-                <div class="clearfix time-entry-wrapper">
-                    <div class="col-sm-7">
-                        <span class="desc">{{time_entry.desc}}</span>
-                    </div>
-                    <div class="meta col-sm-2">
-                        <span class="project-name">{{time_entry.project_name}}</span>
-                        <span class="client-name">{{time_entry.client_name}}</span>
-                    </div>
-                    <div class="meta col-sm-2">
-                        <span class="time">{{time_entry.time}} hrs</span>
-                    </div>
-                </div>
+          <div class="clearfix time-entry-wrapper timeline-item">
+            <div class="col-sm-4">
+              <span class="desc"><strong>{{time_entry.desc}}</strong></span>
             </div>
-        </div>
+            <div class="meta col-sm-2">
+              <span class="tags">{{time_entry.tags}}</span>
+            </div>
+            <div class="meta col-sm-2">
+              <span class="project-name"><strong>{{time_entry.project_name}}</strong></span>
+              <span class="client-name"><i> ( {{time_entry.client_name}} )</i></span>
+            </div>
+            <div class="meta col-sm-2">
+              <span class="time"><strong>{{time_entry.time}} hrs</strong></span>
+            </div>
+            <div class="meta col-sm-2">
+              <a class="btn btn-sm btn-danger" href="javascript:void(0);" ng-click="deleteTimeEntry(time_entry.id)">
+                <i class="fa fa-trash"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>
+
